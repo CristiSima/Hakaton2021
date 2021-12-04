@@ -16,9 +16,9 @@ def send_js():
 def original():
     return render_template('original.html', API_KEY=API_KEY)
 
-@app.route('/test.html')
+@app.route('/test')
 def test():
-    return render_template('test.html')
+    return render_template('sliding_menu.html')
 
 @app.route('/constants.json')
 def constants():

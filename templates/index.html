@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <title>Example: Overpass-API with Leaflet.js</title>
@@ -6,22 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" type="text/css" href="/static/style.css"/>
+    <link rel="stylesheet" href="/static/sliding_menu.css" />
   </head>
   <body>
     <div id="map">
-
       <div class="leaflet-control-container">
-        <div class="leaflet-top leaflet-right">
-            <div id="overpass-api-controls" class="leaflet-bar leaflet-control">
-                asdsadf
-                <BR>
-                <button id="query-button" type="button" name="button" onclick="run();" value="RUN">RUN</input>
-            </div>
-          <!-- <div id="overpass-api-controls" class="leaflet-bar leaflet-control">
-            <input id="query-textfield" value="leisure=playground" size="50">
-            <input id="query-button" type="button" value="Laden">
-          </div> -->
-        </div>
+          <div class="leaflet-top leaflet-right">
+              <div id="mySidenav" class="sidenav">
+                  <a href="#">About</a>
+                  <a href="#">Services</a>
+                  <a href="#">Clients</a>
+                  <a href="#">Contact</a>
+              </div>
+              <div id="overpass-api-controls" class="leaflet-bar leaflet-control">
+                  asdsadf
+                  <BR>
+                  <button id="query-button" type="button" name="button" onclick="toggleNav()" value="Stay">Filters</button>
+              </div>
+              <!-- <div id="overpass-api-controls" class="leaflet-bar leaflet-control">
+      <input id="query-textfield" value="leisure=playground" size="50">
+      <input id="query-button" type="button" value="Laden">
+    </div> -->
+          </div>
       </div>
 
     </div>
@@ -30,6 +36,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://unpkg.com/osmtogeojson@2.2.12/osmtogeojson.js"></script>
     <script src="/static/index.js"></script>
-
+    <script src="/static/sliding_menu.js"></script>
   </body>
 </html>
