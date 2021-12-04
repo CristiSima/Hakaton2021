@@ -94,9 +94,11 @@ function generateCgeckboxes()
         var li=document.getElementById("items").appendChild(document.createElement("li"));
         var checkbox=li.appendChild(document.createElement("input"));
         checkbox.setAttribute("type","checkbox")
+        checkbox.setAttribute("id",activity)
         checkbox.setAttribute("activity",activity)
-        checkbox.setAttribute("value",ActivityToPlace[activity])
-        li.appendChild(document.createTextNode(ActivityToPlace[activity]));
+        var label=li.appendChild(document.createElement("label"));
+        label.setAttribute("for",activity);
+        label.appendChild(document.createTextNode(ActivityToPlace[activity]));
     }
 }
 setTimeout(generateCgeckboxes, 1);
