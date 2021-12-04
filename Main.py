@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, redirect, make_response, send_from_directory
+import Constants
+import json
 
 async_mode = None
 app = Flask(__name__)
@@ -10,10 +12,19 @@ API_KEY="AIzaSyAlxiAjgWXsml4qGvP04iMHgLt75GTuTyk"
 def send_js():
     return render_template('index.html', API_KEY=API_KEY)
 
+@app.route('/original')
+def original():
+    return render_template('original.html', API_KEY=API_KEY)
+
 @app.route('/test.html')
 def test():
     return render_template('test.html')
 
+@app.route('/constants.json')
+def constants():
+    resp=make_response(json.dumps(Constants.WEB_CONSTANTS))
+    resp.mimetype="application/json"
+    return resp
 
 if __name__ == '__main__':
     app.run(debug=True,host="0.0.0.0")
