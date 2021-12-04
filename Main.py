@@ -20,6 +20,10 @@ def original():
 def test():
     return render_template('sliding_menu.html')
 
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory("static",'favicon.ico')
+
 @app.route('/constants.json')
 def constants():
     resp=make_response(json.dumps(Constants.WEB_CONSTANTS))
