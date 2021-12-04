@@ -103,6 +103,14 @@ setTimeout(generateCgeckboxes, 1);
 
 function getFilters()
 {
+    var values=getCheckboxvalue();
+    var filter="";
+    for (var value in values) {
+        filter+= sportFilter(values[value])
+
+    }
+    console.log(filter)
+    return filter
     return sportFilter("soccer")+sportFilter("skateboard")+bikeFilter;
 }
 
@@ -207,4 +215,4 @@ function run() {
   });
 }
 
-setTimeout(run, 1);
+setTimeout(run, 50);

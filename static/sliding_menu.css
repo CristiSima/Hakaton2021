@@ -11,13 +11,17 @@
     position: relative;
     cursor: pointer;
     display: inline-block;
+    align-self: flex-end;
     padding: 5px 50px 5px 10px;
+    /* align-content: right; */
     /* border: 1px solid #ccc; */
 }
 
 .collapsable-menu .anchor:after {
     position: absolute;
     content: "";
+    text-align: right;
+
     border-left: 2px solid black;
     border-top: 2px solid black;
     padding: 5px;
@@ -42,6 +46,12 @@
 .collapsable-menu ul#items li {
     margin: 3px;
     list-style: none;
+}
+
+.collapsable-menu ul#items button {
+    margin: 3px;
+    list-style: none;
+    font-size: 18px;
 }
 
 .collapsable-menu.visible .anchor {

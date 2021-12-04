@@ -11,14 +11,16 @@ function initNav() {
 initNav();
 
 // dor debug/STYLEING
-// document.getElementById('overpass-api-controls').getElementsByClassName('anchor')[0].onclick(2)
+document.getElementById('overpass-api-controls').getElementsByClassName('anchor')[0].onclick(2)
 
 function getCheckboxvalue() {
     var array = [];
     var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
 
     for (var i = 0; i < checkboxes.length; i++) {
-        array.push(checkboxes[i].activity);
+        array.push(checkboxes[i].getAttribute("activity"));
     }
-    array.concat();
+    // array.concat();
+    console.log(array)
+    return array;
 }
