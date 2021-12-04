@@ -1,149 +1,57 @@
-/* The side navigation menu */
-.sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
-    right: 0;
-    background-color: #111; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+
+
+.menu-content {
+    font-family: 'Oswald', sans-serif;
+    padding: 0 0 50px;
 }
 
-    /* The navigation menu links */
-    .sidenav a {
-        padding: 8px 8px 8px 32px;
-        text-decoration: none;
-        font-size: 25px;
-        color: #818181;
-        display: block;
-        transition: 0.3s;
+.collapsable-menu {
+    padding: 10px 30px;
+    border-bottom: 1px solid #CDE700;
+    box-shadow: 1px 2px 3px;
+    background-color: rgb(255, 255, 255);
+    display: inline-block;
+}
+
+    .collapsable-menu .anchor {
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        padding: 5px 50px 5px 10px;
+        border: 1px solid #ccc;
     }
 
-        /* When you mouse over the navigation links, change their color */
-        .sidenav a:hover {
-            color: #f1f1f1;
-        }
+.collapsable-menu .anchor:after {
+    position: absolute;
+    content: "";
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    padding: 5px;
+    right: 10px;
+    top: 20%;
+    -moz-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+}
 
-    /* Position and style the close button (top right corner) */
-    .sidenav .closebtn {
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
+.collapsable-menu ul.items {
+    padding: 2px;
+    display: none;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+    .collapsable-menu ul.items li {
+        list-style: none;
     }
 
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#main {
-    transition: margin-left .5s;
-    padding: 20px;
+.collapsable-menu.visible .anchor {
+    color: #0094ff;
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 15px;
-    }
-
-        .sidenav a {
-            font-size: 18px;
-        }
+.collapsable-menu.visible .items {
+    display: block;
 }
-
-Step 3) Add JavaScript:
-
-The example below slides in the side navigation, and makes it 250px wide:
-Sidenav Overlay Example
-/* Set the width of the side navigation to 250px */
-function openNav() {
-    document .getElementById("mySidenav").style.width = "250px";
-}
-
-/* Set the width of the side navigation to 0 */
-function closeNav() {
-    document .getElementById("mySidenav").style.width = "0";
-}
-
-The example below slides in the side navigation, and pushes the page content to the right (the value used to set the width of the sidenav is also used to set the left margin of the "page content"):
-Sidenav Push Content
-/* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
-function openNav() {
-    document .getElementById("mySidenav").style.width = "250px";
-    document .getElementById("main").style.marginLeft = "250px";
-}
-
-/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-function closeNav() {
-    document .getElementById("mySidenav").style.width = "0";
-    document .getElementById("main").style.marginLeft = "0";
-}
-
-The example below also slides in the side navigation, and pushes the page content to the right, only this time, we add a black background color with a 40% opacity to the body element, to "highlight" the side navigation:
-Sidenav Push Content w/ opacity
-/* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
-function openNav() {
-    document .getElementById("mySidenav").style.width = "250px";
-    document .getElementById("main").style.marginLeft = "250px";
-    document .body.style.backgroundColor = "rgba(0,0,0,0.4)";
-}
-
-/* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
-function closeNav() {
-    document .getElementById("mySidenav").style.width = "0";
-    document .getElementById("main").style.marginLeft = "0";
-    document .body.style.backgroundColor = "white";
-}
-
-The example below slides in the side navigation from the left and covers the whole page (100% width):
-Sidenav Full-width:
-/* Open the sidenav */
-function openNav() {
-    document .getElementById("mySidenav").style.width = "100%";
-}
-
-/* Close/hide the sidenav */
-function closeNav() {
-    document .getElementById("mySidenav").style.width = "0";
-}
-
-The example below opens and close the side navigation menu without animations:
-Sidenav without Animation
-/* Open the sidenav */
-function openNav() {
-    document .getElementById("mySidenav").style.display = "block";
-}
-
-/* Close/hide the sidenav */
-function closeNav() {
-    document .getElementById("mySidenav").style.display = "none";
-}
-
-The example below shows how to create a right-sided navigation menu:
-Right-sided navigation:
-.sidenav {
-    right: 0;
-}
-
-The example below shows how to create a side navigation menu that is always shown (fixed):
-Always show sidenav:
-/* The sidenav */
-.sidenav {
-    height: 100%;
-    width: 200px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    padding-top: 20px;
-}
-
-/* Page content */
-.main {
-    margin-left: 200px; /* Same as the width of the sidenav */
-}
-
