@@ -13,3 +13,18 @@ html, body, #map {
 #overpass-api-controls a {
   display: inline;
 }
+
+.leaflet-control-position {
+	font: bold 18px 'Lucida Console', Monaco, monospace;
+	text-indent: 1px;
+}
+
+/* #leaflet-popup-content-wrapper
+{
+    text-align: center;
+}
+
+#leaflet-popup-content-debug
+{
+    text-align: left;
+} */
