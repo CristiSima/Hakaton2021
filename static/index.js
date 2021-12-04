@@ -85,6 +85,22 @@ var activities=[
     "archery"
 ]
 
+function generateCgeckboxes()
+{
+    for(var activity in activities)
+    {
+        activity=activities[activity]
+        console.log(activity)
+        var li=document.getElementById("items").appendChild(document.createElement("li"));
+        var checkbox=li.appendChild(document.createElement("input"));
+        checkbox.setAttribute("type","checkbox")
+        checkbox.setAttribute("activity",activity)
+        checkbox.setAttribute("value",ActivityToPlace[activity])
+        li.appendChild(document.createTextNode(ActivityToPlace[activity]));
+    }
+}
+setTimeout(generateCgeckboxes, 1);
+
 function getFilters()
 {
     return sportFilter("soccer")+sportFilter("skateboard")+bikeFilter;

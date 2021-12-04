@@ -1,25 +1,19 @@
-
-
-.menu-content {
-    font-family: 'Oswald', sans-serif;
-    padding: 0 0 50px;
-}
-
 .collapsable-menu {
     padding: 10px 30px;
-    border-bottom: 1px solid #CDE700;
-    box-shadow: 1px 2px 3px;
-    background-color: rgb(255, 255, 255);
+    /* border-bottom: 1px solid #CDE700; */
+    /* box-shadow: 1px 2px 3px; */
+    /* background-color: rgb(255, 255, 255); */
     display: inline-block;
 }
 
-    .collapsable-menu .anchor {
-        position: relative;
-        cursor: pointer;
-        display: inline-block;
-        padding: 5px 50px 5px 10px;
-        border: 1px solid #ccc;
-    }
+.collapsable-menu .anchor {
+    font-size: 23px;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 50px 5px 10px;
+    /* border: 1px solid #ccc; */
+}
 
 .collapsable-menu .anchor:after {
     position: absolute;
@@ -36,22 +30,25 @@
     transform: rotate(-135deg);
 }
 
-.collapsable-menu ul.items {
-    padding: 2px;
+.collapsable-menu ul#items {
+    padding: 10px;
     display: none;
     margin: 0;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     border-top: none;
+    font-size: 18px;
 }
 
-    .collapsable-menu ul.items li {
-        list-style: none;
-    }
+.collapsable-menu ul#items li {
+    margin: 3px;
+    list-style: none;
+}
 
 .collapsable-menu.visible .anchor {
-    color: #0094ff;
+    /* color for anchor when opened*/
+    /* color: #0094ff;  */
 }
 
-.collapsable-menu.visible .items {
+.collapsable-menu.visible #items {
     display: block;
 }
