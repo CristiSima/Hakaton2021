@@ -10,6 +10,20 @@ function initNav() {
 }
 initNav();
 
+function checkAllBoxes() {
+    var checkboxes = document.querySelectorAll('input[type=checkbox]');
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].checked = true;
+    }
+}
+
+function uncheckAllBoxes() {
+    var checkboxes = document.querySelectorAll('input[type=checkbox]');
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].checked = false;
+    }
+}
+
 // dor debug/STYLEING
 document.getElementById('overpass-api-controls').getElementsByClassName('anchor')[0].onclick(2)
 
