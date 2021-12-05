@@ -163,11 +163,25 @@ function conterToGeolocation()
 
 function doingQuery()
 {
+    var buttons=document.getElementsByClassName("query-button");
+    for(var i=0;i<buttons.length;i++)
+    {
+        console.log(i)
+        console.log(buttons[i])
+        buttons[i].disabled=true;
+    }
 
 }
 
 function doneQuery()
 {
+    var buttons=document.getElementsByClassName("query-button");
+    for(var i=0;i<buttons.length;i++)
+    {
+        console.log(i)
+        console.log(buttons[i])
+        buttons[i].disabled=false;
+    }
     while(layers.length!=0)
         layers.pop().remove();
 }
