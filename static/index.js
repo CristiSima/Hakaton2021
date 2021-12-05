@@ -11,9 +11,9 @@ var MARGIN_LONG=0.05;
 // });
 
 var map = L.map('map').setView([44.4072742, 26.1030503], 14);
-L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
-  attribution: '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
 
@@ -31,7 +31,7 @@ function buildOverpassApiUrl(map, overpassQuery) {
   var wayQuery = 'way[' + overpassQuery + '](' + bounds + ');';
   var relationQuery = 'relation[' + overpassQuery + '](' + bounds + ');';
   var query = '?data=[out:json][timeout:15];(' + nodeQuery + wayQuery + relationQuery + ');out body geom;';
-  var baseUrl = 'http://overpass-api.de/api/interpreter';
+  var baseUrl = 'https://overpass-api.de/api/interpreter';
   var resultUrl = baseUrl + query;
   return resultUrl;
 }
@@ -62,7 +62,7 @@ function buildFromOverpassApiUrl(map, overpassTurboQuery) {
   // console.log(getBounds(map, overpassTurboQuery));
   var groupQuery = overpassTurboQuery.replaceAll("{{bbox}}",getBounds(map, overpassTurboQuery))
   var query = '?data=[out:json][timeout:15];(' + groupQuery + ');out body geom;';
-  var baseUrl = 'http://overpass-api.de/api/interpreter';
+  var baseUrl = 'https://overpass-api.de/api/interpreter';
   var resultUrl = baseUrl + query;
   return resultUrl;
 }
@@ -73,7 +73,8 @@ var ActivityToPlace={
     "basketball":"Basketball Court",
     "tennis":"Tennis Court",
     "chess":"Chess Table",
-    "archery":"Archery Range"
+    "archery":"Archery Range",
+    "bike_rental":"Bicycle Rental"
 }
 //
 var activities=[
@@ -84,6 +85,10 @@ var activities=[
     "chess",
     "archery"
 ]
+
+var specialActivities={
+    "bike_rental":bikeFilter
+}
 
 function generateCgeckboxes()
 {
@@ -96,6 +101,21 @@ function generateCgeckboxes()
         checkbox.setAttribute("type","checkbox")
         checkbox.setAttribute("id",activity)
         checkbox.setAttribute("activity",activity)
+        // checkbox.setAttribute("activityType","sport")
+        var label=li.appendChild(document.createElement("label"));
+        label.setAttribute("for",activity);
+        label.appendChild(document.createTextNode(ActivityToPlace[activity]));
+    }
+
+    for(var activity in specialActivities)
+    {
+        console.log(activity)
+        var li=document.getElementById("items").appendChild(document.createElement("li"));
+        var checkbox=li.appendChild(document.createElement("input"));
+        checkbox.setAttribute("type","checkbox")
+        checkbox.setAttribute("id",activity)
+        checkbox.setAttribute("activity",activity)
+        // checkbox.setAttribute("activityType","special")
         var label=li.appendChild(document.createElement("label"));
         label.setAttribute("for",activity);
         label.appendChild(document.createTextNode(ActivityToPlace[activity]));
@@ -108,8 +128,11 @@ function getFilters()
     var values=getCheckboxvalue();
     var filter="";
     for (var value in values) {
-        filter+= sportFilter(values[value])
-
+        console.log(values[value])
+        if(activities.includes(values[value]))
+            filter+= sportFilter(values[value])
+        else
+            filter+= specialActivities[values[value]]
     }
     console.log(filter)
     return filter
